@@ -29,14 +29,14 @@ export default {
   methods: {
     getPaste: function(){
       this.loading = true;
-      this.$http.get(this.$http.options.root + this.$route.params.pasteId).then((response) => {
+      this.$http.post(this.$http.options.root + this.$route.params.pasteId, {"password" : "juj" }).then((response) => {
               // success callback
               this.loading = false;
               this.pasteContent = response.body.content;
           }, (response) => {
               this.loading = false;
               this.openNotify("404", "Paste not found", "error");
-              this.$router.push({path:"/zobacz"});
+            //  this.$router.push({path:"/zobacz"});
           })
     },
 
