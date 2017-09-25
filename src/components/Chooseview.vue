@@ -2,8 +2,8 @@
   <div>
     <h2>Please provide ID of your paste</h2>
     <el-row v-loading.body="loading">
-      <el-col :span="18" :offset="2"><el-input placeholder="Input ID" v-model="pasteId"></el-input></el-col>
-      <el-col :span="2"><el-button type="primary" size="normal" v-on:click="navigateToPaste">Show paste</el-button></el-col>
+      <el-col :lg="{span: 18, offset: 2}" :xs="24" :md="20"><el-input placeholder="Input ID" v-model="pasteId"></el-input></el-col>
+      <el-col :lg="2" :xs="24" :md="4"><el-button type="primary" size="normal" v-on:click="navigateToPaste">Show paste</el-button></el-col>
     </el-row>
   </div>
 </template>

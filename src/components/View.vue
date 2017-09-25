@@ -1,10 +1,10 @@
 <template>
   <div>
     <el-row>
-      <el-col :span="16" :offset="4"><h2>You are watching paste no. {{ this.$route.params.pasteId }}</h2></el-col>
+      <el-col :lg="{span: 16, offset: 4}" :sm="{span: 22, offset: 2}"><h2>You are watching paste no. {{ this.$route.params.pasteId }}</h2></el-col>
     </el-row>
     <el-row>
-      <el-col :span="16" :offset="4" v-loading.body="loading">
+      <el-col :lg="{span: 16, offset: 4}" :sm="{span: 22, offset: 2}" v-loading.body="loading">
         <vue-editor v-model="pasteContent" disabled></vue-editor>
       </el-col>
     </el-row>
