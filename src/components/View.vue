@@ -24,28 +24,55 @@ export default {
     return {
       pasteContent: '',
       loading: false,
+      password: "",
+      passwordChecked: false
     }
   },
   methods: {
     getPaste: function(){
       this.loading = true;
-      this.$http.post(this.$http.options.root + this.$route.params.pasteId, {"password" : "juj" }).then((response) => {
+      this.$http.post(this.$http.options.root + this.$route.params.pasteId, {"password" : this.password }).then((response) => {
               // success callback
               this.loading = false;
               this.pasteContent = response.body.content;
           }, (response) => {
               this.loading = false;
+              console.log(response);
+              if(this.passwordChecked === false){
+                this.passwordChecked = true;
+                return this.getPassword();
+              }
               this.openNotify("404", "Paste not found", "error");
-            //  this.$router.push({path:"/zobacz"});
+              this.$router.push({path:"/zobacz"});
           })
     },
+    getPassword : function(){
+      this.$prompt('Is there a password?', 'Password', {
+          confirmButtonText: 'OK',
+          cancelButtonText: 'Cancel',
+          inputErrorMessage: 'Invalid Password'
+        }).then(({value}) => {
+          this.password = value;
+          this.getPaste();
+        },()=> {
+          this.openNotify("Error", "Try again", "error");
+          this.$router.push({path:"/zobacz"});
+        });
+    },
+    resetData: function() {
+      Object.assign(this.$data, this.$options.data.call(this));
+    },
+    pasteIdChanged: function() {
+      this.resetData();
+      this.getPaste();
+    }
 
   },
   watch: {
-    '$route' : function(){ this.getPaste(); },
+    '$route' : function(){ this.pasteIdChanged(); },
     //pasteContent : function(){ this.pasteContent = this.originalContent; }
   },
-  created: function(){ this.getPaste(); }
+  created: function(){ this.pasteIdChanged(); }
 
 
 }
