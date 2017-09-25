@@ -13,17 +13,17 @@ export default new Router({
       component: app
     },
     {
-      path: '/wklej',
+      path: '/paste',
       component: Add,
       name: 'add'
     },
     {
-      path: '/zobacz/:pasteId',
+      path: '/view/:pasteId',
       component: View,
       name: 'view'
     },
     {
-      path: '/zobacz',
+      path: '/view',
       component: Chooseview,
       name: 'Chooseview'
     }

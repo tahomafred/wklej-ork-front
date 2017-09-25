@@ -59,7 +59,7 @@ export default {
                 // success callback
                 this.loading = false;
                 this.openNotify("Paste Added", "Your id is " + response.body.id, "success");
-                this.$router.push({path:"/zobacz/" + response.body.id});
+                this.$router.push({path:"/view/" + response.body.id});
 
             }, (response) => {
                 // error callback

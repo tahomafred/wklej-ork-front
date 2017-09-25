@@ -2,9 +2,9 @@
   <div class="menu">
 
     <el-menu theme="dark" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router="true">
-      <el-menu-item index="/home">Wklej tekste </el-menu-item>
-      <el-menu-item index="/wklej">Wklej</el-menu-item>
-      <el-menu-item index="/zobacz">Zobacz</el-menu-item>
+      <el-menu-item index="/home">Wklej-ork-frontend </el-menu-item>
+      <el-menu-item index="/paste">Paste</el-menu-item>
+      <el-menu-item index="/view">View</el-menu-item>
     </el-menu>
 
   </div>

@@ -43,20 +43,20 @@ export default {
                 return this.getPassword();
               }
               this.openNotify("404", "Paste not found", "error");
-              this.$router.push({path:"/zobacz"});
+              this.$router.push({path:"/view"});
           })
     },
     getPassword : function(){
       this.$prompt('Is there a password?', 'Password', {
           confirmButtonText: 'OK',
           cancelButtonText: 'Cancel',
-          inputErrorMessage: 'Invalid Password'
+          inputErrorMessage: 'Invalid Password',
         }).then(({value}) => {
           this.password = value;
           this.getPaste();
         },()=> {
           this.openNotify("Error", "Try again", "error");
-          this.$router.push({path:"/zobacz"});
+          this.$router.push({path:"/view"});
         });
     },
     resetData: function() {

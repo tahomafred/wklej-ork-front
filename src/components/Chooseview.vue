@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     navigateToPaste: function() {
-      this.$router.push({path:"/zobacz/" + this.pasteId});
+      this.$router.push({path:"/view/" + this.pasteId});
     }
   }
 }
