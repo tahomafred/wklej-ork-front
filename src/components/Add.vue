@@ -2,16 +2,16 @@
 
   <div class="add"  v-loading.body="loading">
     <el-row>
-      <el-col :span="16" :offset="1"><h2>Input the text</h2></el-col>
+      <el-col :lg="16" :offset="1" :sm="22" :xs="22"><h2>Input the text</h2></el-col>
     </el-row>
     <el-row>
-      <el-col :span="16" :offset="1">
+      <el-col :lg="16" :offset="1" :sm="22" :xs="22">
         <vue-editor v-model="pasteContent"></vue-editor>
       </el-col>
-      <el-col :span="5" :offset="1">
-          <el-row>
-            <el-col :span="12"><el-button type="primary" icon="delete" size="large" v-on:click="clearEditor">Delete</el-button></el-col>
-            <el-col :span="12"><el-button type="primary" icon="upload" size="large" v-on:click="sendPaste(pasteContent)">Save</el-button></el-col>
+      <el-col :lg="{span: 5, offset: 1}" :sm="{span : 10, offset : 7}" :xs="{span: 14, offset: 5}">
+          <el-row class="buttons">
+            <el-col :lg="12" :sm="12" :xs="12"><el-button type="primary" icon="delete" size="large" v-on:click="clearEditor">Delete</el-button></el-col>
+            <el-col :lg="12" :sm="12" :xs="12"><el-button type="primary" icon="upload" size="large" v-on:click="sendPaste(pasteContent)">Save</el-button></el-col>
           </el-row>
           <el-row>
             <p>Private paste? Add a password.</p>
@@ -91,5 +91,8 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+}
+.buttons{
+  margin-top: 20px;
 }
 </style>
