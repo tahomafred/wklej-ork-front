@@ -13,6 +13,14 @@
       <el-col :span="5" :offset="1" class="buttons">
           <el-button type="primary" icon="delete" size="large" v-on:click="clearEditor">Delete</el-button>
           <el-button type="primary" icon="upload" size="large" v-on:click="sendPaste(pasteContent)">Save</el-button>
+          <el-row align="bottom">
+            <el-col :span="8">
+              <el-switch v-model="passwordEnabled"></el-switch>
+            </el-col>
+            <el-col :span="16">
+              <el-input :disabled="!passwordEnabled" v-model="password"></el-input>
+            </el-col>
+          </el-row>
       </el-col>
     </el-row>
   </div>
@@ -31,7 +39,9 @@ export default {
   data () {
     return {
       pasteContent: "",
-      loading: false
+      loading: false,
+      password: "",
+      passwordEnabled: false
     }
   },
   methods : {
@@ -42,12 +52,11 @@ export default {
       } else {
         this.openNotify("Empty", "Can't delete nothing", "error");
       };
-
     },
     sendPaste: function(data){
       if(this.checkEditor() == true){
         this.loading = true;
-        this.$http.post(this.$http.options.root, {'content' : this.pasteContent }).then((response) => {
+        this.$http.post(this.$http.options.root, {'content' : this.pasteContent, 'password' : this.password }).then((response) => {
                 // success callback
                 this.loading = false;
                 this.openNotify("Paste Added", "Your id is " + response.body.id, "success");
@@ -62,13 +71,19 @@ export default {
       } else { this.openNotify("Paste Not Added", "Paste can't be empty", "error")}
 
     },
-
     checkEditor: function(){
       if(this.pasteContent){
         return true;
       } else { return false };
+    },
+    deletePassword: function(){
+      if(this.passwordEnabled === false){
+        this.password = "";
+      }
     }
-
+  },
+  watch: {
+    passwordEnabled : function(){ this.deletePassword(); }
   }
 }
 </script>
@@ -77,5 +92,8 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+}
+el-row{
+  margin-top: 50px;
 }
 </style>
