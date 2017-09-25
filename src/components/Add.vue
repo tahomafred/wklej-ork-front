@@ -2,24 +2,23 @@
 
   <div class="add"  v-loading.body="loading">
     <el-row>
-      <el-col :span="16" :offset="1"><h2>Wklej tekst do pola poniżej</h2></el-col>
-
-
+      <el-col :span="16" :offset="1"><h2>Input the text</h2></el-col>
     </el-row>
     <el-row>
       <el-col :span="16" :offset="1">
         <vue-editor v-model="pasteContent"></vue-editor>
       </el-col>
-      <el-col :span="5" :offset="1" class="buttons">
-          <el-button type="primary" icon="delete" size="large" v-on:click="clearEditor">Delete</el-button>
-          <el-button type="primary" icon="upload" size="large" v-on:click="sendPaste(pasteContent)">Save</el-button>
-          <el-row align="bottom">
-            <el-col :span="8">
-              <el-switch v-model="passwordEnabled"></el-switch>
-            </el-col>
-            <el-col :span="16">
-              <el-input :disabled="!passwordEnabled" v-model="password"></el-input>
-            </el-col>
+      <el-col :span="5" :offset="1">
+          <el-row>
+            <el-col :span="12"><el-button type="primary" icon="delete" size="large" v-on:click="clearEditor">Delete</el-button></el-col>
+            <el-col :span="12"><el-button type="primary" icon="upload" size="large" v-on:click="sendPaste(pasteContent)">Save</el-button></el-col>
+          </el-row>
+          <el-row>
+            <p>Private paste? Add a password.</p>
+          </el-row>
+          <el-row type="flex" align="middle">
+            <el-col :span="8"> <el-switch v-model="passwordEnabled"></el-switch> </el-col>
+            <el-col :span="14"> <el-input :disabled="!passwordEnabled" v-model="password" icon="edit"></el-input> </el-col>
           </el-row>
       </el-col>
     </el-row>
@@ -92,8 +91,5 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
-}
-el-row{
-  margin-top: 50px;
 }
 </style>
