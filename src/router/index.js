@@ -4,6 +4,7 @@ import Hello from '@/components/Hello';
 import Add from '@/components/Add';
 import View from '@/components/View';
 import Chooseview from '@/components/Chooseview';
+import Register from '@/components/Register';
 Vue.use(Router)
 
 export default new Router({
@@ -26,6 +27,11 @@ export default new Router({
       path: '/view',
       component: Chooseview,
       name: 'Chooseview'
+    },
+    {
+      path: '/register',
+      component: Register,
+      name: 'Register'
     }
   ]
 })
