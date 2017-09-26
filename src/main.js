@@ -23,8 +23,7 @@ Vue.http.options.root = 'http://localhost/wklejpizde-backend/web/app_dev.php/pas
 //vue-resource
 
 //vuex
-import Vuex from 'vuex';
-Vue.use(Vuex);
+import {store} from './store';
 //vuex
 
 Vue.config.productionTip = false;

@@ -5,6 +5,7 @@
       <el-menu-item index="/home">Wklej-ork-frontend</el-menu-item>
       <el-menu-item index="/paste">Paste</el-menu-item>
       <el-menu-item index="/view">View</el-menu-item>
+      <el-menu-item index="/view">{{ count }}</el-menu-item>
     </el-menu>
 
   </div>
@@ -15,6 +16,11 @@ export default {
   name: 'menu',
   data () {
     return {
+    }
+  },
+  computed: {
+    count(){
+      return this.$store.state.count
     }
   },
   methods: {
