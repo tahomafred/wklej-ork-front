@@ -1,6 +1,8 @@
-# wklejpizde
+# wklej-ork
 
-> A Vue.js project
+> Frontend for [wklej-ork](https://github.com/kbkk/wklej_ork)
+
+![picture alt](https://i.imgur.com/lFFWY4F.png "This picture will be outdated very fast")
 
 ## Build Setup
 
@@ -10,7 +12,6 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
-
 # build for production with minification
 npm run build
 
