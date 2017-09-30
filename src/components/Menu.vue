@@ -1,5 +1,6 @@
 <template>
   <div class="menu">
+    <popoverLogged></popoverLogged>
     <el-popover
       ref="notLogged"
       placement="top"
@@ -41,8 +42,11 @@
 </template>
 
 <script>
+import popoverLogged from "@/components/navigation/popoverLogged.vue";
 export default {
+  components: {popoverLogged},
   name: 'menu',
+
   data () {
     return {
       popover : [{state: false}, {state: false}]
