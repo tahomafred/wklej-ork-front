@@ -1,9 +1,8 @@
 <template>
   <div class="menu">
-    <popoverLogged></popoverLogged>
     <el-popover
       ref="notLogged"
-      placement="top"
+      placement="bottom"
       width="160"
       v-model="popover[0].state"
       trigger="manual">
@@ -15,7 +14,7 @@
     </el-popover>
     <el-popover
       ref="Logged"
-      placement="top"
+      placement="bottom"
       width="160"
       v-model="popover[1].state"
       trigger="manual">
@@ -24,6 +23,20 @@
         <el-button type="primary" size="mini" @click="userLogout">Log Out</el-button>
       </div>
     </el-popover>
+    <el-dialog title="Log In" :visible.sync="dialog[0]">
+      <el-form :model="form" :rules="LogInRules" inline label-position="top">
+        <el-form-item label="Login" :label-width="formLabelWidth" prop="login">
+          <el-input v-model="form.login" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="Password" :label-width="formLabelWidth" prop="password">
+          <el-input type="password" v-model="form.password" auto-complete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="handleLogin">Confirm</el-button>
+      </span>
+    </el-dialog>
+    
 
 
     <el-menu theme="dark" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router="true">
@@ -42,16 +55,32 @@
 </template>
 
 <script>
-import popoverLogged from "@/components/navigation/popoverLogged.vue";
+import loginDialog from "@/components/navigation/loginDialog.vue";
+//TO DO move everything into separate components
 export default {
-  components: {popoverLogged},
   name: 'menu',
-
   data () {
     return {
-      popover : [{state: false}, {state: false}]
+      popover : [{state: false}, {state: false}],
+      dialog: [false],
+      formLabelWidth: "120px",
+      form: {
+        login: '',
+        password: '',
+      },
+      LogInRules: {
+        login: [
+          { required: true, message: 'Please input Login', trigger: 'blur'},
+          { min: 3, message: 'Length should at least 3 characters', trigger: 'blur' }
+        ],
+        password: [
+          {required: true, message: 'Please input Password', trigger: 'blur'},
+          { min: 8, message: 'Length should at least 8 characters', trigger: 'blur' }
+        ]
+      }
     }
   },
+
   computed: {
     user(){
       return this.$store.state.user
@@ -70,7 +99,7 @@ export default {
     handleSelect: function(key, keyPath) {
       // I really dunno what this does, but I got a warn in the console so there it is!
     },
-    userLogin: function(){ this.user.loggedIn = true, this.closeAllPopovers();},
+    userLogin: function(){ this.dialog[0] = true; this.closeAllPopovers();},
     userRegister: function(){this.closeAllPopovers();},
     userLogout: function(){
       this.user.loggedIn = false;

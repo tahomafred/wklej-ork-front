@@ -9,9 +9,8 @@ export const store = new Vuex.Store({
       token: "oasdkorgjeihioasdhjoohgfxdtbjh", //only a prop for now
       name: "geeq34",
       loggedIn: true
-    }
+    },
   },
   mutations: {
-
   }
 })
