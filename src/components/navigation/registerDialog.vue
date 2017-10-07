@@ -1,6 +1,6 @@
 <template>
   <el-dialog title="Register" :visible.sync="visibleDialog" :before-close="closeDialog">
-    <el-form ref="registerForm" :model="form[1]" :rules="registerRules" label-position="top">
+    <el-form ref="registerForm" :model="form" :rules="registerRules" label-position="top">
       <el-form-item label="Email" :label-width="formLabelWidth" prop="email">
         <el-input v-model="form.email" auto-complete="off"></el-input>
       </el-form-item>

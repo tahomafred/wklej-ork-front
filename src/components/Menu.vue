@@ -57,47 +57,8 @@ export default {
     return {
       popover : [{state: false}, {state: false}],
       dialog: [false, false],
-      formLabelWidth: "120px",
-      form: [
-        {
-        login: '',
-        password: ''
-        },
-        {
-        email: '',
-        login: '',
-        password: '',
-        }],
-
-      registerRules: {
-        login: [
-          { required: true, message: 'Please input Login', trigger: 'blur'},
-          { min: 3, message: 'Length should at least 3 characters', trigger: 'blur' }
-        ],
-        password: [
-          {required: true, message: 'Please input Password', trigger: 'blur'},
-          { min: 8, message: 'Length should at least 8 characters', trigger: 'blur' }
-        ],
-        email: [
-          {required: true, message: 'Please input Email', trigger: 'blur'},
-          { type: 'email', message: 'Please input correct email address', trigger: 'blur,change' }
-        ],
-      },
-
-      LogInRules: {
-        login: [
-          { required: true, message: 'Please input Login', trigger: 'blur'},
-          { min: 3, message: 'Length should at least 3 characters', trigger: 'blur' }
-        ],
-        password: [
-          {required: true, message: 'Please input Password', trigger: 'blur'},
-          { min: 8, message: 'Length should at least 8 characters', trigger: 'blur' }
-        ]
-      },
-
     }
   },
-
   computed: {
     user(){
       return this.$store.state.user
