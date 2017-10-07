@@ -5,7 +5,7 @@
     </el-row>
     <el-row>
       <el-col :lg="{span: 16, offset: 4}" :sm="{span: 22, offset: 2}" v-loading.body="loading">
-        <vue-editor v-model="pasteContent" disabled></vue-editor>
+        <vue-editor v-model="pasteContent" disabled :editorToolbar="[]"></vue-editor>
       </el-col>
     </el-row>
   </div>

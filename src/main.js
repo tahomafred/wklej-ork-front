@@ -13,7 +13,9 @@ Vue.use(ElementUI)
 
 //font-awesome
 import 'font-awesome/css/font-awesome.css';
-
+import 'less-loader';
+import 'less';
+import './font-awesome.less';
 //font-awesome
 
 //vue-resource

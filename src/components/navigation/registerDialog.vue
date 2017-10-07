@@ -1,16 +1,21 @@
 <template>
   <el-dialog title="Register" :visible.sync="visibleDialog" :before-close="closeDialog">
-    <el-form ref="registerForm" :model="form" :rules="registerRules" label-position="top">
-      <el-form-item label="Email" :label-width="formLabelWidth" prop="email">
-        <el-input v-model="form.email" auto-complete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="Login" :label-width="formLabelWidth" prop="login">
-        <el-input v-model="form.login" auto-complete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="Password" :label-width="formLabelWidth" prop="password">
-        <el-input type="password" v-model="form.password" auto-complete="off"></el-input>
-      </el-form-item>
-    </el-form>
+    <el-row>
+      <el-col span="15" offset="3">
+        <el-form ref="registerForm" :model="form" :rules="registerRules" label-position="right">
+          <el-form-item label="Email" :label-width="formLabelWidth" prop="email">
+            <el-input v-model="form.email" auto-complete="off" icon="fa-envelope-o"></el-input>
+          </el-form-item>
+          <el-form-item label="Login" :label-width="formLabelWidth" prop="login">
+            <el-input v-model="form.login" auto-complete="off" icon="fa-user"></el-input>
+          </el-form-item>
+          <el-form-item label="Password" :label-width="formLabelWidth" prop="password">
+            <el-input type="password" v-model="form.password" auto-complete="off" icon="fa-key"></el-input>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
+
     <span slot="footer" class="dialog-footer">
       <el-button type="primary" @click="handleRegister">Register</el-button>
     </span>

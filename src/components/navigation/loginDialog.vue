@@ -2,10 +2,10 @@
   <el-dialog title="Log In" :visible.sync="visibleDialog" :before-close="closeDialog">
     <el-form ref="loginForm" :model="form" :rules="LogInRules" inline label-position="top">
       <el-form-item label="Login" :label-width="formLabelWidth" prop="login">
-        <el-input v-model="form.login" auto-complete="off"></el-input>
+        <el-input v-model="form.login" auto-complete="off" icon="fa-user"></el-input>
       </el-form-item>
       <el-form-item label="Password" :label-width="formLabelWidth" prop="password">
-        <el-input type="password" v-model="form.password" auto-complete="off"></el-input>
+        <el-input type="password" v-model="form.password" auto-complete="off" icon="fa-key"></el-input>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
