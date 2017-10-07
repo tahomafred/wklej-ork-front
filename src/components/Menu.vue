@@ -27,10 +27,6 @@
     </el-popover>
 
 
-
-
-
-
     <el-menu theme="dark" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router="true">
       <el-menu-item index="/home">Wklej-ork-frontend</el-menu-item>
       <el-menu-item index="/paste">Paste</el-menu-item>
@@ -42,14 +38,12 @@
         <i class="fa fa-user-o" aria-hidden="true"></i>
       </el-menu-item>
     </el-menu>
-
   </div>
 </template>
 
 <script>
 import loginDialog from "@/components/navigation/loginDialog.vue";
 import registerDialog from "@/components/navigation/registerDialog.vue";
-//TO DO move everything into separate components
 export default {
   name: 'menu',
   components: {loginDialog, registerDialog},

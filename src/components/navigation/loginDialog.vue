@@ -40,7 +40,6 @@ export default {
           { min: 8, message: 'Length should at least 8 characters', trigger: 'blur' }
         ]
       }
-
     }
   },
   methods: {
