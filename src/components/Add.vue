@@ -20,6 +20,11 @@
             <el-col :span="8"> <el-switch v-model="passwordEnabled"></el-switch> </el-col>
             <el-col :span="14"> <el-input :disabled="!passwordEnabled" v-model="password" icon="edit"></el-input> </el-col>
           </el-row>
+          <el-row>
+            <el-col :span="24">
+              <Counter :text="pasteContent"></Counter>
+            </el-col>
+          </el-row>
       </el-col>
     </el-row>
   </div>
@@ -29,11 +34,11 @@
 //vue2-editor
 import { VueEditor } from 'vue2-editor';
 //vue2-editor
-
+import Counter from '@/components/counter';
 
 export default {
   name: 'add',
-  components: {VueEditor},
+  components: {VueEditor, Counter},
   mixins: [require('../mixins.js')],
   data () {
     return {
