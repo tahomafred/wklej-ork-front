@@ -2,6 +2,8 @@
 
   <div>
     <el-card>
+      <div>Word count</div>
+      <p>{{wordCount}}</p>
       <div>Text length with spaces</div>
       <p>{{textLength}}</p>
       <div>Text length without spaces</div>
@@ -27,6 +29,9 @@ export default {
     },
     textLengthNoSpace: function(){
       return this.pasteText.replace(/\s+/g,"").length;
+    },
+    wordCount: function(){
+      return this.pasteText.trim().split(/\s+/).length - 1;
     }
   },
 }
