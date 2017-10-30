@@ -31,7 +31,7 @@ export default {
       return this.pasteText.replace(/\s+/g,"").length;
     },
     wordCount: function(){
-      return this.pasteText.trim().split(/\s+/).length - 1;
+      return this.pasteText.trim().split(/\s+/).length;
     }
   },
 }
