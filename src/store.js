@@ -6,11 +6,21 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     user: {
-      token: "oasdkorgjeihioasdhjoohgfxdtbjh", //only a prop for now
-      name: "geeq34",
-      loggedIn: true
+      token: "",
+      name: "",
+      loggedIn: false
     },
   },
   mutations: {
+    logIn (state,payload) {                         //I think these two can be done better
+      state.user.token = payload.access_token;
+      state.user.name = payload.username;
+      state.user.loggedIn = true;
+    },
+    logOut (state) {
+      state.user.token = "";
+      state.user.name = "";
+      state.user.loggedIn = false;
+    }
   }
 })

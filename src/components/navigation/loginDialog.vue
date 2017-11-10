@@ -49,7 +49,17 @@ export default {
     handleLogin: function(){
       this.$refs['loginForm'].validate((valid) => {
         if (valid) {
-          alert('submit!');
+          this.$http.post(this.$http.options.root + 'auth/create_token', {"username" : this.form.login, 'password' : this.form.password })
+          .then((response) => {
+                  // success callback
+                  this.$store.commit('logIn', {
+                    username: response.body.username,
+                    access_token: response.body.access_token
+                  });
+                  console.log(response.body.access_token);
+              }, (response) => {
+
+              })
           return true;
         } else {
           console.log('error submit!!');

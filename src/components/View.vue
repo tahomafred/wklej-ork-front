@@ -31,7 +31,7 @@ export default {
   methods: {
     getPaste: function(){
       this.loading = true;
-      this.$http.post(this.$http.options.root + this.$route.params.pasteId, {"password" : this.password }).then((response) => {
+      this.$http.post(this.$http.options.root + 'paste/' + this.$route.params.pasteId, {"password" : this.password }).then((response) => {
               // success callback
               this.loading = false;
               this.pasteContent = response.body.content;

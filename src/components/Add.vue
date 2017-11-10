@@ -60,7 +60,7 @@ export default {
     sendPaste: function(data){
       if(this.checkEditor() == true){
         this.loading = true;
-        this.$http.post(this.$http.options.root, {'content' : this.pasteContent, 'password' : this.password }).then((response) => {
+        this.$http.post(this.$http.options.root + "paste/", {'content' : this.pasteContent, 'password' : this.password }).then((response) => {
                 // success callback
                 this.loading = false;
                 this.openNotify("Paste Added", "Your id is " + response.body.id, "success");

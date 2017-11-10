@@ -80,7 +80,7 @@ export default {
       this.closeAllPopovers();
     },
     userLogout: function(){
-      this.user.loggedIn = false;
+      this.$store.commit('logOut');
       this.closeAllPopovers();
     },
 

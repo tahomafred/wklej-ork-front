@@ -21,7 +21,7 @@ import './font-awesome.less';
 //vue-resource
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
-Vue.http.options.root = 'http://localhost/wklejpizde-backend/web/app_dev.php/paste/';
+Vue.http.options.root = 'http://localhost/wklejpizde-backend/web/app_dev.php/';
 //vue-resource
 
 //vuex
