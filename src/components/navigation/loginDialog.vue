@@ -1,6 +1,6 @@
 <template>
-  <el-dialog title="Log In" :visible.sync="visibleDialog" :before-close="closeDialog">
-    <el-form ref="loginForm" :model="form" :rules="LogInRules" inline label-position="top">
+  <el-dialog title="Log In" :visible.sync="visibleDialog" :before-close="closeDialog" >
+    <el-form ref="loginForm" :model="form" :rules="LogInRules" inline label-position="top" v-loading.body="loading">
       <el-form-item label="Login" :label-width="formLabelWidth" prop="login">
         <el-input v-model="form.login" auto-complete="off" icon="fa-user"></el-input>
       </el-form-item>
@@ -17,6 +17,7 @@
 <script>
 export default {
   name: 'loginDialog',
+  mixins: [require('../../mixins.js')],
   props: ['visible'],
   computed: {
     visibleDialog: function(){
@@ -26,6 +27,7 @@ export default {
   data () {
     return {
       formLabelWidth: "120px",
+      loading: false,
       form: {
         login: '',
         password: '',
@@ -46,9 +48,13 @@ export default {
     closeDialog: function(){
       this.$emit('update:visible', false)
     },
+    resetData: function() {
+      Object.assign(this.$data, this.$options.data.call(this));
+    },
     handleLogin: function(){
       this.$refs['loginForm'].validate((valid) => {
         if (valid) {
+          this.loading = true;
           this.$http.post(this.$http.options.root + 'auth/create_token', {"username" : this.form.login, 'password' : this.form.password })
           .then((response) => {
                   // success callback
@@ -56,7 +62,10 @@ export default {
                     username: response.body.username,
                     access_token: response.body.access_token
                   });
-                  console.log(response.body.access_token);
+                  this.loading = false;
+                  this.closeDialog();
+                  this.resetData();
+                  this.openNotify("Logged In", "Hello " + response.body.username, "success");
               }, (response) => {
 
               })
