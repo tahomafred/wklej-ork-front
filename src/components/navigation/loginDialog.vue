@@ -67,11 +67,13 @@ export default {
                   this.resetData();
                   this.openNotify("Logged In", "Hello " + response.body.username, "success");
               }, (response) => {
-
+                  this.openNotify("Not logged in", "Wrong email or password", "error");
+                  this.resetData();
+                  this.loading = false;
+                  this.closeDialog();
               })
           return true;
         } else {
-          console.log('error submit!!');
           return false;
         }
       });

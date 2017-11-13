@@ -2,7 +2,7 @@
   <el-dialog title="Register" :visible.sync="visibleDialog" :before-close="closeDialog">
     <el-row>
       <el-col span="15" offset="3">
-        <el-form ref="registerForm" :model="form" :rules="registerRules" label-position="right">
+        <el-form ref="registerForm" :model="form" :rules="registerRules" label-position="right" v-loading.body="loading">
           <el-form-item label="Email" :label-width="formLabelWidth" prop="email">
             <el-input v-model="form.email" auto-complete="off" icon="fa-envelope-o"></el-input>
           </el-form-item>
@@ -26,6 +26,7 @@
 export default {
   name: 'registerDialog',
   props: ['visible'],
+  mixins: [require('../../mixins.js')],
   computed: {
     visibleDialog: function(){
       return this.visible;
@@ -34,6 +35,7 @@ export default {
   data () {
     return {
       formLabelWidth: "120px",
+      loading: false,
       form: {
         email: '',
         login: '',
@@ -63,13 +65,29 @@ export default {
     handleRegister: function(){
       this.$refs['registerForm'].validate((valid) => {
         if (valid) {
-          alert('submit!');
+          this.loading = true;
+          this.$http.post(this.$http.options.root + 'auth/register_user', {"username" : this.form.login, 'password' : this.form.password, 'email' : this.form.email })
+          .then((response) => {
+                  // success
+                  this.loading = false;
+                  this.closeDialog();
+                  this.resetData();
+                  this.openNotify("Register Complete", "Hello " + response.body.username +  ". Please Log in.", "success");
+              }, (response) => {
+                  this.openNotify("Not logged in", "Wrong email or password", "error");
+                  this.resetData();
+                  this.loading = false;
+                  this.closeDialog();
+              })
           return true;
         } else {
           console.log('error submit!!');
           return false;
         }
       });
+    },
+    resetData: function() {
+      Object.assign(this.$data, this.$options.data.call(this));
     },
   }
 }
